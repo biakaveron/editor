@@ -34,9 +34,9 @@ return array
 	),
   ),
 
-  'fckeditor' => array
+  'ckeditor' => array
   (
-    'driver'		=> 'fckeditor',
+    'driver'		=> 'ckeditor',
 	'width'			=> 400,
 	'height'		=> 600,
 	'fieldname'		=> 'text',
