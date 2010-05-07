@@ -87,9 +87,10 @@ width:"'.$this->width.'px"
 		if (in_array($field, array('plugins', 'mode', 'theme', 'toolbar', 'buttons1', 'buttons2', 'buttons3')))
 		{
 			$this->$field = $value;
+			return $this;
 		}
 
-		return $this;
+		return parent::set($field, $value);
 	}
 
 }

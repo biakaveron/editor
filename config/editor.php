@@ -26,12 +26,10 @@ return array
 	'width'			=> 500,
 	'height'		=> 300,
 	'fieldname'		=> 'text',
-	'params'		=> array
+/*	'params'		=> array
 	(
-	  'theme'		  => 'advanced',
-	  'plugins'		  => array('emotions'),
-	  'buttons2'	  => array('emotions'),
-	),
+
+	),*/
   ),
 
   'ckeditor' => array

@@ -24,11 +24,13 @@ abstract class Kohana_Editor {
 			$config['driver'] = Editor::$default_driver;
 		}
 
+		$config['name'] = $name;
+
 		$driver = 'Editor_'.ucfirst($config['driver']);
 
-		$editor = new $driver();
-		return $editor->init($config);
+		$editor = new $driver($name, $config);
 
+		return $editor/*->init($config)*/;
 	}
 
 	protected $_styles	= NULL;
@@ -36,6 +38,8 @@ abstract class Kohana_Editor {
 	protected $_scripts = NULL;
 
 	protected $_driver	= FALSE;
+
+	protected $_name;
 
 	public $width		= 500;
 
@@ -51,19 +55,23 @@ abstract class Kohana_Editor {
 	* @param   mixed   configuration array or profile name
 	* @return  void
 	*/
-	public function init($config = array())
+	public function __construct($name, $config = array())
 	{
 
 		$this->_driver = $driver = $config['driver'];
 
+		$this->_name = $name;
+
 		foreach($config as $field => $value)
 		{
-			if (! is_array($value))
+			if ( ! is_array($value))
 			{
 				$this->set($field, $value);
 			}
 		}
 		
+		$config['params'] = Kohana::config('editor/'.$driver)->get($name, array());
+
 		if (isset($config['params']))
 		{
 			foreach($config['params'] as $key => $value)

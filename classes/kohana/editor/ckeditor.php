@@ -53,7 +53,7 @@ CKEDITOR.replace( "'.$this->fieldname.'",
 	toolbar: "'.ucfirst($this->toolbar).'",
 	width: "'.intval($this->width).'",
 	height: "'.intval($this->height).'",
-	customConfig: "'.url::base().self::$path.'/'.self::$configfile.'",
+	customConfig: "'.url::base().self::$path.'/'.self::$configfile.'"
 });
 
 //]]>
@@ -77,7 +77,11 @@ CKEDITOR.replace( "'.$this->fieldname.'",
 		}
 		elseif ($field == 'configfile')
 		{
-			self::$$field = $value;
+			self::$$field = $value;	
+		}
+		else
+		{
+			return parent::set($field, $value);
 		}
 
 		return $this;
